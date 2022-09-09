@@ -4,17 +4,16 @@ import java.util.ArrayList;
 import java.util.stream.IntStream;
 
 public class TestWork {
-
     final static ArrayList<String> indexes = new ArrayList<>();
     final static ArrayList<Integer[]> myIntFinal = new ArrayList<>();
     final static char comma = ',';
     final static char dash = '-';
     static ArrayList<ArrayList<Integer>> arrayListBest;
 
-    public static void firstFunction() {
+    public static ArrayList<Integer[]> firstFunction(ArrayList<String> index) {
 
         boolean OneLineChar = false;
-        for (String item : indexes) {
+        for (String item : index) {
             // массив, который содержим финальный набор преобразованных чисел
             ArrayList<Integer> currentInt = new ArrayList<>();
             if (item.length() == 1) {
@@ -101,8 +100,9 @@ public class TestWork {
             Integer[] ara = currentInt.toArray(new Integer[0]);
             myIntFinal.add(ara);
         }
+        return myIntFinal;
     }
-    public static void SecondsFunction(ArrayList<Integer[]> sendsArrays) {
+    public static void secondsFunction(ArrayList<Integer[]> sendsArrays) {
         arrayListBest = new ArrayList<>();
 
         ArrayList<Integer> listInt = new ArrayList<>();
@@ -136,11 +136,11 @@ public class TestWork {
 
     public static void main(String[] args) {
         // начальные условия
-        indexes.add("1,3-5");
+        indexes.add("1,3-6");
         indexes.add("2");
         indexes.add("3-4");
 
-        firstFunction();
-        SecondsFunction(myIntFinal);
+        firstFunction(indexes);
+        secondsFunction(myIntFinal);
     }
 }
