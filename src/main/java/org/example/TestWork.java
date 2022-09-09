@@ -12,27 +12,27 @@ public class TestWork {
 
     public static ArrayList<Integer[]> firstFunction(ArrayList<String> index) {
 
-        boolean OneLineChar = false;
+        boolean oneLineChar = false;
         for (String item : index) {
             // массив, который содержим финальный набор преобразованных чисел
             ArrayList<Integer> currentInt = new ArrayList<>();
             if (item.length() == 1) {
-                OneLineChar = true;
+                oneLineChar = true;
             }
             char lastChar = '1';
             boolean isTireExists = false;
             int startTure = 0;
-            int CheckTwoDigit = 0;
-            boolean NoNumber = false;
+            int checkTwoDigit = 0;
+            boolean noNumber = false;
             int currentPosition = 0;
             int lastTwoDigit = 0;
-            boolean TwoDigit = false;
+            boolean twoDigit = false;
 
             for (char it : item.toCharArray()) {
                 if (it == comma) {
-                    CheckTwoDigit = 0;
-                    NoNumber = true;
-                    if (TwoDigit) {
+                    checkTwoDigit = 0;
+                    noNumber = true;
+                    if (twoDigit) {
                         if (isTireExists) {
                             isTireExists = false;
                             IntStream.range(startTure, lastTwoDigit + 1)
@@ -40,7 +40,7 @@ public class TestWork {
                         } else {
                             currentInt.add(lastTwoDigit);
                         }
-                        TwoDigit = false;
+                        twoDigit = false;
                     } else {
                         if (isTireExists) {
                             isTireExists = false;
@@ -52,22 +52,22 @@ public class TestWork {
                     }
                 }
                 if (it == dash) {
-                    CheckTwoDigit = 0;
+                    checkTwoDigit = 0;
                     isTireExists = true;
-                    NoNumber = true;
-                    if (TwoDigit) {
+                    noNumber = true;
+                    if (twoDigit) {
                         startTure = lastTwoDigit;
-                        TwoDigit = false;
+                        twoDigit = false;
                     } else {
                         startTure = Integer.parseInt(String.valueOf(lastChar));
                     }
                 }
                 currentPosition++;
 
-                if (!NoNumber) {
-                    CheckTwoDigit++;
-                    if (CheckTwoDigit == 2) {
-                        TwoDigit = true;
+                if (!noNumber) {
+                    checkTwoDigit++;
+                    if (checkTwoDigit == 2) {
+                        twoDigit = true;
                         String s = String.valueOf(lastChar) + it;
                         lastTwoDigit = Integer.parseInt(s);
                         if (currentPosition == item.length()) {
@@ -79,7 +79,7 @@ public class TestWork {
                                 currentInt.add(lastTwoDigit);
                             }
                         }
-                        CheckTwoDigit = 0;
+                        checkTwoDigit = 0;
                     }
                 }
                 if (currentPosition == item.length() && lastChar == comma) {
@@ -90,12 +90,12 @@ public class TestWork {
                     IntStream.range(startTure, Integer.parseInt(String.valueOf(it)) + 1)
                             .forEachOrdered(currentInt::add);
                 }
-                if (OneLineChar) {
+                if (oneLineChar) {
                     currentInt.add(Integer.parseInt(String.valueOf(it)));
-                    OneLineChar = false;
+                    oneLineChar = false;
                 }
                 lastChar = it;
-                NoNumber = false;
+                noNumber = false;
             }
             Integer[] ara = currentInt.toArray(new Integer[0]);
             myIntFinal.add(ara);
