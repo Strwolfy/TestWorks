@@ -13,7 +13,7 @@ public class TestWork {
     public static ArrayList<Integer[]> firstFunction(ArrayList<String> index) {
 
         boolean oneLineChar = false;
-        for (String item : index) {
+        for (String item: index) {
             // массив, который содержим финальный набор преобразованных чисел
             ArrayList<Integer> currentInt = new ArrayList<>();
             if (item.length() == 1) {
@@ -82,14 +82,6 @@ public class TestWork {
                         checkTwoDigit = 0;
                     }
                 }
-                if (currentPosition == item.length() && lastChar == comma) {
-                    currentInt.add(Integer.parseInt(String.valueOf(it)));
-                }
-                if (currentPosition == item.length() && lastChar == dash) {
-                    isTireExists = false;
-                    IntStream.range(startTure, Integer.parseInt(String.valueOf(it)) + 1)
-                            .forEachOrdered(currentInt::add);
-                }
                 if (oneLineChar) {
                     currentInt.add(Integer.parseInt(String.valueOf(it)));
                     oneLineChar = false;
@@ -108,7 +100,7 @@ public class TestWork {
         ArrayList<Integer> listInt = new ArrayList<>();
         Integer[] first = sendsArrays.get(0);
 
-        for (int a : first) {
+        for (int a: first) {
             listInt.add(a);
             conclusion(1, sendsArrays, listInt);
             listInt.clear();
@@ -123,7 +115,7 @@ public class TestWork {
                 arrayListBest.add(fList);
             }
         } else {
-            for (int b : currentArray.get(currentInt)) {
+            for (int b: currentArray.get(currentInt)) {
                 if (myMainInt.size() <= currentInt) {
                     myMainInt.add(b);
                 } else {
@@ -136,9 +128,9 @@ public class TestWork {
 
     public static void main(String[] args) {
         // начальные условия
-        indexes.add("1,3-6");
-        indexes.add("2");
-        indexes.add("3-4");
+        indexes.add("12,15-17,9,43");
+        indexes.add("10-14,3,5,9,10-11");
+        indexes.add("2,4-6,70-81");
 
         firstFunction(indexes);
         secondsFunction(myIntFinal);
